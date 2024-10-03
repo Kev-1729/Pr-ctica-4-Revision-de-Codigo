@@ -62,39 +62,40 @@ for escuela in escuelas:
         print(f"Error al encontrar enlace en la escuela {escuela}: {str(e)}")
 ```
 
+```python
+for estudiante in estudiantes:
+            try:
+                escuela_profesional = estudiante.find_element(By.CSS_SELECTOR, 'td:nth-child(4)')
+                nota = estudiante.find_element(By.CSS_SELECTOR, 'td:nth-child(5)')
+                data_estudiantes.append({
+                    'Escuela Profesional': escuela_profesional.text,
+                    'Nota': nota.text
+                })
+            except NoSuchElementException:
+                pass
+```
+
 ### 3. **Modularización del Código**
 **Problema**: El código estaba concentrado en pocas funciones, lo que dificultaba su mantenimiento y comprensión.
 
 **Solución**: Se dividió el código en funciones más pequeñas y modulares, cada una con una única responsabilidad, lo que facilita la lectura y la posibilidad de hacer pruebas unitarias.
 
 ```python
-def extraer_datos_escuelas(escuelas):
-    datos_escuelas = []
-    for escuela in escuelas:
-        url = obtener_url_escuela(escuela)
-        nombre = obtener_nombre_escuela(escuela)
-        datos_escuelas.append({
-            'Nombre': nombre,
-            'URL': url
-        })
-    return datos_escuelas
+def acciones_del_mouse(driver):
+    ##Acciones para Ejecutar la pagina correctamente
+    
+    # Realiza un scroll hasta el final de la página
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(2)  # Espera un momento para que el contenido cargue
 
-def obtener_url_escuela(escuela):
-    try:
-        return escuela.find_element(By.TAG_NAME, 'a').get_attribute('href')
-    except NoSuchElementException:
-        return None
-
-def obtener_nombre_escuela(escuela):
-    try:
-        return escuela.find_element(By.TAG_NAME, 'a').text
-    except NoSuchElementException:
-        return None
+    # Simula un clic en un punto de la página para activar los elementos
+    action = ActionChains(driver)
+    action.move_by_offset(10, 10).click().perform()
 
 def crear_dataframe(datos, columnas):
     return pd.DataFrame(datos, columns=columnas)
 
-def guardar_csv(dataframe, nombre_archivo):
-    dataframe.to_csv(f'{nombre_archivo}.csv', index=False)
+def guardar_csv(dataframe, nombre_escuela):
+    dataframe.to_csv(f'{nombre_escuela}.csv', index=False)
 ```
 
