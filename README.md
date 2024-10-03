@@ -99,3 +99,14 @@ def guardar_csv(dataframe, nombre_escuela):
     dataframe.to_csv(f'{nombre_escuela}.csv', index=False)
 ```
 
+## Reporte de SonarLint - Análisis Estático
+
+**Fecha de análisis**: [03/10/2024]
+**Archivos analizados**: [Web_Scraping_Simulacro_UNMSM_Corregido]
+
+## Resumen
+
+- Total de problemas encontrados: [0]
+- Problemas críticos: [0]
+- Problemas importantes: [0]
+- Problemas menores: [0]
