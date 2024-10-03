@@ -101,8 +101,8 @@ def guardar_csv(dataframe, nombre_escuela):
 
 ## Reporte de SonarLint - Análisis Estático
 
-* Fecha de análisis**: [03/10/2024]
-* Archivos analizados**: [Web_Scraping_Simulacro_UNMSM_Corregido]
+* Fecha de análisis: [03/10/2024]
+* Archivos analizados: [Web_Scraping_Simulacro_UNMSM_Corregido]
 
 ## Resumen
 
