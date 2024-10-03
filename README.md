@@ -49,12 +49,12 @@ cerrar_driver(driver)
 for escuela in escuelas:
     try:
         url = escuela.find_element(By.TAG_NAME, 'a').get_attribute('href')
-        ep = escuela.find_element(By.TAG_NAME, 'a').text
+        nombre_escuela = escuela.find_element(By.TAG_NAME, 'a').text
         codigo = url.replace("https://admision.unmsm.edu.pe/WebsiteSimulacro20251/1/", "")
         codigo = codigo.replace("/0.html", "")
         Escuelas_Profesionales.append({
             'Código Ep': codigo,
-            'Escuela': ep,
+            'Escuela': nombre_escuela,
             'URL': url
         })
     except NoSuchElementException as e:
